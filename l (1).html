@@ -1,0 +1,109 @@
+<html>
+	<style>
+		* {
+        margin: 0;
+        padding: 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+		}
+      
+    .cd {
+        width: 100%;
+        height: 100vh;
+        background-image:url('https://img.freepik.com/free-photo/close-up-thermometer-showing-high-temperature_23-2149456780.jpg?size=626&ext=jpg&ga=GA1.1.1683663074.1671541985&semt=ais');
+        background-size:cover;
+		display: flex;
+		align-items: center;
+    }
+      
+    .cd h1 {
+        color:lightblue;
+        font-weight: 800;
+        font-size: 55px;
+		 text-shadow: 2px 2px #000000;
+        text-align: center;
+    }
+      
+    .con-row {
+   
+        display: flex;
+        width: 80%;
+        justify-content: space-between;
+        background:url('https://img.freepik.com/free-photo/pastel-blue-vignette-concrete-textured-background_53876-102637.jpg?w=1060&t=st=1683042447~exp=1683043047~hmac=0b3542d7d924611c9df5653f823ee7b64a965e48a50bca9c8c2924ef11aca5b1');
+        border-radius: 10px;
+        padding: 50px 30px;
+    }
+      
+    .col {
+        flex-basis:52%;
+        text-align:center;
+    }
+      
+    .col label {
+        font-size: 20px;
+        font-weight: 600;
+        color: #000;
+		font-family:Century Golockthic;
+    }
+      
+    .col input {
+        width: 150px;
+        height: 30px;
+        background: lightblue;
+        text-align: center;
+    }
+</style>
+  
+ <body>
+ <h1 align="center" bgcolor="lightblue">Virtual Temperature Scale</h1>
+<div class="cd">
+    <h1>Quick<br>
+        Temperature Converter</h1>
+    <div class="con-row">
+        <div class="col">
+            <label>Fahrenheit</label>
+            <input type="number" id="fahrenheit">
+        </div>
+  
+        <div class="col">
+            <label>Celsius</label>
+            <input type="number" id="celsius">
+        </div>
+  
+        <div class="col">
+            <label>Kelvin</label>
+            <input type="number" id="kelvin">
+        </div>
+    </div>
+</div>
+  
+<script>
+    let celsius = document.getElementById('celsius');
+    let fahrenheit = document.getElementById('fahrenheit');
+    let kelvin = document.getElementById('kelvin');
+    celsius.oninput = function () {
+        let f = (parseFloat(celsius.value) * 9) / 5 + 32;
+        fahrenheit.value = parseFloat(f.toFixed(2));
+      
+        let k = (parseFloat(celsius.value) + 273.15);
+        kelvin.value = parseFloat(k.toFixed(2));
+    }
+    fahrenheit.oninput = function () {
+	let c = ((parseFloat(
+            fahrenheit.value) - 32) * 5) / 9;
+        celsius.value = parseFloat(c.toFixed(2));
+      
+        let k = (parseFloat(
+            fahrenheit.value) - 32) * 5 / 9 + 273.15;
+        kelvin.value = parseFloat(k.toFixed(2));
+    }
+    kelvin.oninput = function () {
+        let f = (parseFloat(
+            kelvin.value) - 273.15) * 9 / 5 + 32;
+        fahrenheit.value = parseFloat(f.toFixed(2));
+      
+        let c = (parseFloat(kelvin.value) - 273.15);
+        celsius.value = parseFloat(c.toFixed(2));
+    }
+</script>
+</body>
+</html>
